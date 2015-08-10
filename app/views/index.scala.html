@@ -2,5 +2,25 @@
 
 @main("Welcome to COMP353OAMC") {
 
-    <h1>Welcome to COMP353 OAMC (Open Access Medical Center)</h1>
+    <div class="container col-sm-8 col-sm-offset-2">
+        <h1>Welcome to COMP353 OAMC (Open Access Medical Center)</h1>
+        <h1>@message</h1>
+        <p>These links are accessible to specific roles</p>
+        <ul>
+            <li><a href="@routes.Application.admin()">Administrator</a></li>
+            <li><a href="@routes.Application.doctor()">Doctor</a></li>
+            <li><a href="@routes.Application.nurse()">Nurse</a></li>
+            <li><a href="@routes.Application.shiftSupervisor()">Shift Supervisor</a></li>
+            <li><a href="@routes.Application.intern()">Intern</a></li>
+        </ul>
+        <hr />
+        <p>These are the users we have in the database:</p>
+        <ul>
+            <li>Admin with username 'admin' and password 'admin'</li>
+            <li>Doctor with username 'doctor' and password 'doctor'</li>
+            <li>Intern with username 'intern' and password 'intern'</li>
+            <li>Shift supervisor with username 'supervisor' and password 'supervisor'</li>
+            <li>Nurse with username 'nurse' and password 'nurse'</li>
+        </ul>
+    </div>
 }

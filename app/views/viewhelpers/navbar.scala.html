@@ -1,0 +1,29 @@
+@(isLoggedIn: Boolean, staff: Staff)
+
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="@routes.Application.index()" class="navbar-brand">OAMC</a>
+            <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-links">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-links">
+            <ul class="nav navbar-nav">
+                <li class="nav"><a href="">Item 1</a></li>
+                <li class="nav"><a href="">Item 2</a> </li>
+                <li class="nav"><a href="">Item 3</a> </li>
+            </ul>
+            <div class="navbar-right">
+                @if(isLoggedIn) {
+                    <span class="navbar-text">Logged in as @helpers.Security.getUserInfo(ctx())</span>
+                    <a href="@routes.Application.logout()" class="navbar-text">Logout</a>
+                } else {
+                    <a href="@routes.Application.login()" class="navbar-text">Login</a>
+                }
+            </div>
+        </div>
+    </div>
+</nav>
