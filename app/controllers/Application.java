@@ -36,7 +36,7 @@ public class Application extends Controller {
             return ok("Username password don't exist");
 
         session("username", staff.getUsername());
-        String originalUrl = session().get("originalUrl");
+        String originalUrl = session().get("lastVisitedUrl");
         return redirect(originalUrl == null ? "/" : originalUrl);
     }
 

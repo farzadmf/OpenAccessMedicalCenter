@@ -18,6 +18,12 @@ public class Global extends GlobalSettings {
 
     @Override
     public Action onRequest(Http.Request request, Method method) {
+        String lastVisitedUrl = null;
+
+        if (request.uri().toLowerCase().contains("login") || request.uri().toLowerCase().contains("logout"))
+            return super.onRequest(request, method);
+
+        lastVisitedUrl = request.uri();
 
         if (method.isAnnotationPresent(Authenticated.class) ||
                 method.isAnnotationPresent(AuthorizedRoles.class) ||
@@ -25,12 +31,12 @@ public class Global extends GlobalSettings {
 
             AuthorizedRoles authorizedRoles = method.getAnnotation(AuthorizedRoles.class);
             Authorized[] authorized = new Authorized[] { method.getAnnotation(Authorized.class) };
-            String originalUrl = request.uri();
 
+            final String finalLastVisitedUrl = lastVisitedUrl;
             return new Action.Simple() {
                 @Override
                 public F.Promise<SimpleResult> call(Http.Context context) throws Throwable {
-                    context.session().put("originalUrl", originalUrl);
+                    context.session().put("lastVisitedUrl", finalLastVisitedUrl);
 
                     if (!Security.isAuthenticated(context))
                         return F.Promise.pure(redirect(controllers.routes.Application.login()));
@@ -43,9 +49,31 @@ public class Global extends GlobalSettings {
                     return delegate.call(context);
                 }
             };
+
         }
 
-        return super.onRequest(request, method);
+        final String finalLastVisitedUrl = lastVisitedUrl;
+        return new Action.Simple() {
+
+            @Override
+            public F.Promise<SimpleResult> call(Http.Context context) throws Throwable {
+                context.session().put("lastVisitedUrl", finalLastVisitedUrl);
+                return delegate.call(context);
+            }
+        };
+//        if (request.uri().toLowerCase().contains("login") || request.uri().toLowerCase().contains("logout")) {
+//
+//            final String finalLastVisitedUrl1 = lastVisitedUrl;
+//            return new Action.Simple() {
+//
+//                @Override
+//                public F.Promise<SimpleResult> call(Http.Context context) throws Throwable {
+//                    context.session().put("lastVisitedUrl", finalLastVisitedUrl1);
+//                    return delegate.call(context);
+//                }
+//            };
+//        }
+
     }
 
     @Override
