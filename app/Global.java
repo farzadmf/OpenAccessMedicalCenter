@@ -1,4 +1,5 @@
 import com.avaje.ebean.Ebean;
+import helpers.Config;
 import helpers.Security;
 import helpers.Security.Authenticated;
 import helpers.Security.Authorized;
@@ -18,7 +19,7 @@ public class Global extends GlobalSettings {
 
     @Override
     public Action onRequest(Http.Request request, Method method) {
-        String lastVisitedUrl = null;
+        String lastVisitedUrl;
 
         if (request.uri().toLowerCase().contains("login") || request.uri().toLowerCase().contains("logout"))
             return super.onRequest(request, method);
@@ -36,7 +37,9 @@ public class Global extends GlobalSettings {
             return new Action.Simple() {
                 @Override
                 public F.Promise<SimpleResult> call(Http.Context context) throws Throwable {
-                    context.session().put("lastVisitedUrl", finalLastVisitedUrl);
+                    String pageBeforeLogin = context.session().get(Config.LAST_VISITED_URL);
+                    context.session().put(Config.PAGE_BEFORE_LOGIN, pageBeforeLogin == null ? "/" : pageBeforeLogin);
+                    context.session().put(Config.LAST_VISITED_URL, finalLastVisitedUrl);
 
                     if (!Security.isAuthenticated(context))
                         return F.Promise.pure(redirect(controllers.routes.Application.login()));
@@ -57,23 +60,10 @@ public class Global extends GlobalSettings {
 
             @Override
             public F.Promise<SimpleResult> call(Http.Context context) throws Throwable {
-                context.session().put("lastVisitedUrl", finalLastVisitedUrl);
+                context.session().put(Config.LAST_VISITED_URL, finalLastVisitedUrl);
                 return delegate.call(context);
             }
         };
-//        if (request.uri().toLowerCase().contains("login") || request.uri().toLowerCase().contains("logout")) {
-//
-//            final String finalLastVisitedUrl1 = lastVisitedUrl;
-//            return new Action.Simple() {
-//
-//                @Override
-//                public F.Promise<SimpleResult> call(Http.Context context) throws Throwable {
-//                    context.session().put("lastVisitedUrl", finalLastVisitedUrl1);
-//                    return delegate.call(context);
-//                }
-//            };
-//        }
-
     }
 
     @Override

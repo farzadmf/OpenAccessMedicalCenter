@@ -20,13 +20,19 @@
                 </div>
                     <div class="form-group">
                         <div class="col-sm-9 col-sm-offset-3">
-                            <button type="submit" name="loginSubmit" id="loginSubmit" class="btn btn-default">
+                            <button type="submit" name="loginSubmit" value="loginSubmit" id="loginSubmit" class="btn btn-default">
                                 Submit</button>
-                            <button type="button" name="loginCancel" id="loginCancel" class="btn btn-primary">
+                            <button type="submit" name="loginCancel" value="loginCancel" id="loginCancel" class="btn btn-primary">
                                 Cancel</button>
                     </div>
                 </div>
             </fieldset>
         </form>
     </div>
+
+    <script>
+        $(function () {
+            $('#username').focus();
+        });
+    </script>
 }

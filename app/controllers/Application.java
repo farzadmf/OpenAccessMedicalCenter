@@ -1,6 +1,7 @@
 package controllers;
 
 import com.avaje.ebean.Ebean;
+import helpers.Config;
 import helpers.Security.Authenticated;
 import helpers.Security.Authorized;
 import helpers.Security.Roles;
@@ -24,6 +25,10 @@ public class Application extends Controller {
 
     public static Result postLogin() {
         Form<Staff> staffForm = Form.form(Staff.class).bindFromRequest();
+
+        if (staffForm.data().containsKey("loginCancel"))
+            return redirect(session(Config.PAGE_BEFORE_LOGIN));
+
         Staff staff = staffForm.get();
 
         List<Staff> staffs = Ebean.find(Staff.class)
