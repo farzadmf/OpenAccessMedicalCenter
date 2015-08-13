@@ -26,8 +26,10 @@ public class Application extends Controller {
     public static Result postLogin() {
         Form<Staff> staffForm = Form.form(Staff.class).bindFromRequest();
 
-        if (staffForm.data().containsKey("loginCancel"))
-            return redirect(session(Config.PAGE_BEFORE_LOGIN));
+        if (staffForm.data().containsKey("loginCancel")) {
+            String pageBeforeLogin = session(Config.PAGE_BEFORE_LOGIN);
+            return redirect(pageBeforeLogin == null ? "/" : pageBeforeLogin);
+        }
 
         Staff staff = staffForm.get();
 
