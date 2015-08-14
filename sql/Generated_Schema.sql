@@ -358,25 +358,25 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `OAMC_2.2`.`Food`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OAMC_2.2`.`Food` (
+/*CREATE TABLE IF NOT EXISTS `OAMC_2.2`.`Food` (
 )
-ENGINE = InnoDB;
+ENGINE = InnoDB;*/
 
 
 -- -----------------------------------------------------
 -- Table `OAMC_2.2`.`Supporting_Devices`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OAMC_2.2`.`Supporting_Devices` (
+/*CREATE TABLE IF NOT EXISTS `OAMC_2.2`.`Supporting_Devices` (
 )
-ENGINE = InnoDB;
+ENGINE = InnoDB;*/
 
 
 -- -----------------------------------------------------
 -- Table `OAMC_2.2`.`Surgical_Equipment`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OAMC_2.2`.`Surgical_Equipment` (
+/*CREATE TABLE IF NOT EXISTS `OAMC_2.2`.`Surgical_Equipment` (
 )
-ENGINE = InnoDB;
+ENGINE = InnoDB;*/
 
 
 -- -----------------------------------------------------
@@ -483,3 +483,4 @@ USE `OAMC_2.2`;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
