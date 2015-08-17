@@ -104,10 +104,10 @@ CREATE TABLE IF NOT EXISTS `OAMC_2.2`.`Location` (
   `Room` INT NOT NULL,
   `Bedcount` VARCHAR(45) NULL,
   `Location_ID` INT NOT NULL,
-  PRIMARY KEY (`Location_ID`),
+  PRIMARY KEY (`Location_ID`)/*,
   UNIQUE INDEX `Room_UNIQUE` (`Room` ASC),
   UNIQUE INDEX `Floor_UNIQUE` (`Floor` ASC),
-  UNIQUE INDEX `Unit_ID_UNIQUE` (`Unit_ID` ASC))
+  UNIQUE INDEX `Unit_ID_UNIQUE` (`Unit_ID` ASC)*/)
 ENGINE = InnoDB;
 
 
@@ -186,7 +186,7 @@ CREATE TABLE IF NOT EXISTS `OAMC_2.2`.`Supplies` (
   `Expiration_Date` DATE NULL,
   `Main_Category` VARCHAR(45) NULL,
   `Sub_Category` VARCHAR(45) NULL,
-  PRIMARY KEY (`Internal_Supply_ID`))
+  PRIMARY KEY (`Internal_Supply_ID` ASC))
 ENGINE = InnoDB;
 
 
@@ -241,7 +241,7 @@ CREATE TABLE IF NOT EXISTS `OAMC_2.2`.`Order_Details` (
   `Order_ID` INT NOT NULL,
   `Supply_ID` INT NOT NULL,
   PRIMARY KEY (`Order_ID`, `Supply_ID`),
-  INDEX `fk_Order_Details_Supplies1_idx` (`Supply_ID` ASC))
+  INDEX `fk_Order_Details_Supplies1_idx` (`Order_ID` ASC, `Supply_ID` ASC))
 ENGINE = InnoDB;
 
 
@@ -252,11 +252,9 @@ CREATE TABLE IF NOT EXISTS `OAMC_2.2`.`Room_Supply` (
   `Quantity` INT NOT NULL,
   `Alotment` INT NULL,
   `Supplies_Internal_Supply_ID` INT NOT NULL,
-  `Location_Unit_ID` INT NOT NULL,
-  `Location_Floor` INT NOT NULL,
-  `Location_Room` INT NOT NULL,
-  PRIMARY KEY (`Supplies_Internal_Supply_ID`, `Location_Unit_ID`, `Location_Floor`, `Location_Room`),
-  INDEX `fk_Room_Supply_Location1_idx` (`Location_Unit_ID` ASC, `Location_Floor` ASC, `Location_Room` ASC))
+  `Location_ID` INT NOT NULL,
+  PRIMARY KEY (`Supplies_Internal_Supply_ID`, `Location_ID`),
+  INDEX `fk_Room_Supply_Location1_idx` (`Location_ID` ASC))
 ENGINE = InnoDB;
 
 

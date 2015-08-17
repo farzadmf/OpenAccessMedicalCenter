@@ -42,7 +42,7 @@ alter table Beds add constraint fk_beds_locID foreign key (Location_Location_ID)
 
 alter table Location add constraint fk_loc_unit foreign key (Unit_ID) references Unit(Unit_ID);
 
-alter table room_supply add constraint fk_RS_loc foreign key (Location_Unit_ID, Location_Floor, Location_Room) references Location(Unit_Unit_ID, Floor, Room);
+alter table room_supply add constraint fk_RS_loc foreign key (Location_ID) references Location(Location_ID);
 
 alter table room_supply add constraint fk_RS_Supply foreign key (Supplies_Internal_Supply_ID) references Supplies(Internal_Supply_ID);
 
@@ -58,11 +58,11 @@ alter table `doctor rotation` add constraint fk_DR_emp foreign key (Doctor_ID) r
 
 alter table `doctor rotation` add constraint fk_dr_unit foreign key (Unit_ID) references Unit(Unit_ID);
 
-alter table patient_treatment_instances_has_supplies add constraint	fk_ptihs_supplies foreign key (Patient_Treatment_Instances_Instance_ID, Patient_Treatment_Instances_Location_Location_ID) references Patient_Treatment_Instance(Instance_ID,Location_Location_ID);
+alter table patient_treatment_instances_has_supplies add constraint	fk_ptihs_pti foreign key (Patient_Treatment_Instances_Instance_ID, Patient_Treatment_Instances_Location_Location_ID) references Patient_Treatment_Instance(Instance_ID,Location_Location_ID);
 
 alter table patient_treatment_instances_has_supplies add constraint fk_Ptihs_Supplies foreign key (Supplies_Internal_Supply_ID) references supplies(Internal_Supply_ID);
 
-alter table order_details add constraint fk_OD_supplies foreign key (supply_id) references supplies(Internal_Supplies_ID);
+alter table order_details add constraint fk_OD_supplies foreign key (supply_id) references supplies(Internal_Supply_ID);
 
 alter table order_details add constraint fk_OD_order foreign key (order_id) references `order`(order_id);
 
