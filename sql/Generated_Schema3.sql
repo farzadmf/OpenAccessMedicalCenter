@@ -263,7 +263,8 @@ CREATE TABLE IF NOT EXISTS `OAMC_2.2`.`Location` (
   `Room` INT NOT NULL COMMENT '',
   `Type` VARCHAR(45) NULL COMMENT '',
   `Unit_Unit_ID` INT NOT NULL COMMENT '',
-  PRIMARY KEY (`Floor`, `Room`, `Unit_Unit_ID`)  COMMENT '',
+  `Location_ID` INT NOT NULL,
+  PRIMARY KEY (`Location_ID`)  COMMENT '',
   INDEX `fk_Location_Unit2_idx` (`Unit_Unit_ID` ASC)  COMMENT '')
 ENGINE = InnoDB;
 
