@@ -41,21 +41,24 @@ Required Interface:
 
 General:
 
--access db via employeeID and password
--ALL employees can see how much they will be paid
+1-access db via employeeID and password
+1-ALL employees can see how much they will be paid
 -TECHNICIANS DO NOT USE THE GUI INTERFACE
 
-Directors/Admin:
-
--all access to human resources, scheduling, available services
--add/delete surgeries in OR
--order supplies
+Directors:
 -add/delete services
+
+
+Admin
+-add/delete surgeries in OR
+-all access to human resources, scheduling, available services
+-order supplies
 -Reports:
 -broken down into months and years
 -different services provided by unit
 -cost/usage of supplies
 -number of surgeries/services performed by doctors
+
 Doctors:
 
 -all information related to patients
