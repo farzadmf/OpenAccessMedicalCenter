@@ -1,10 +1,10 @@
 USE `OAMC_2.2`;
 
 #alter table employee drop foreign key fk_employee_emptypeID;
-Alter Table Employee add constraint fk_employee_emptypeID foreign key (Employee_Type_ID) references employee_type(Employee_Type_ID);
+Alter Table Employee add constraint fk_employee_emptypeID foreign key (Employee_Type_ID) references employee_type(Employee_Type_ID) on delete set null on update cascade;
 
 #alter table employee drop foreign key fk_e
-alter table employee add constraint fk_employee_unit foreign key (Unit) references unit(unit_id);
+alter table employee add constraint fk_employee_unit foreign key (Unit) references unit(unit_id) on delete set null on update cascade;
 
 alter table employee_services add constraint fk_employeeservice_serviceid foreign key (employee_id) references employee(employee_ID);
 
