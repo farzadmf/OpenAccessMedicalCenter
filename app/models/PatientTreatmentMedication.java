@@ -3,17 +3,16 @@ package models;
 import play.db.ebean.Model;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
-@Table(name = "Patient_Treatment_Instances")
-public class PatientTreatment extends Model {
+@Table(name = "Patient_Treatment_Instances_has_Medication")
+public class PatientTreatmentMedication extends Model {
 
     @Embeddable
-    public class PatientTreatmentKey {
-        @Column(name = "Instance_ID")
+    public class PatientTreatmentMedicationKey {
+        @Column(name = "Patient_Treatment_Instances_ID")
         public Integer instanceId;
-        @Column(name = "Location_Location_ID")
+        @Column(name = "Medication_ID")
         public Integer locationId;
 
         @Override
@@ -26,19 +25,16 @@ public class PatientTreatment extends Model {
             if (obj == null)
                 return false;
 
-            if (!(obj instanceof PatientTreatmentKey))
+            if (!(obj instanceof PatientTreatmentMedicationKey))
                 return false;
 
-            PatientTreatmentKey other = (PatientTreatmentKey) obj;
+            PatientTreatmentMedicationKey other = (PatientTreatmentMedicationKey) obj;
             return (other.instanceId.equals(instanceId) && other.locationId.equals(locationId));
         }
     }
 
     @EmbeddedId
-    private PatientTreatmentKey key;
+    private PatientTreatmentMedicationKey key;
 
-    @Column(name = "Treatment_Date")
-    private Date date;
-
-    //TODO: add foreign keys for "patient", "employee", and "treatment"
+    //TODO: add foreign keys for "PatientTreatment" and "Medication"
 }
