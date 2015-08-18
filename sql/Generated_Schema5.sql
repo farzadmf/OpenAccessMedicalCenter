@@ -146,11 +146,8 @@ CREATE TABLE IF NOT EXISTS `OAMC_2.2`.`Treatment_Instances` (
   `Treatment_Date` DATE NOT NULL,
   `Treatment_ID` INT NOT NULL,
   `Location_ID` INT NOT NULL,
-  PRIMARY KEY (`Instance_ID`, `Location_ID`),
-  INDEX `fk_Patient_Treatment_Instances_Patient1_idx` (`Patient_ID` ASC),
-  INDEX `fk_Patient_Treatment_Instances_Treatment1_idx` (`Treatment_ID` ASC),
-  INDEX `fk_Patient_Treatment_Instances_Employee1_idx` (`Employee_ID` ASC),
-  INDEX `fk_Patient_Treatment_Instances_Location1_idx` (`Location_ID` ASC))
+  PRIMARY KEY (`Instance_ID`),
+  INDEX `fk_Patient_Treatment_Instances_Patient1_idx` (`Patient_ID` ASC))
 ;
 
 
