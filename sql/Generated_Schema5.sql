@@ -29,10 +29,10 @@ CREATE TABLE IF NOT EXISTS `OAMC_2.2`.`Unit` (
 -- Table `OAMC_2.2`.`Employee_Type`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `OAMC_2.2`.`Employee_Type` (
-  `Employee_Type_ID` INT NOT NULL,
+  `Employee_Type_ID` INT auto_increment NOT NULL,
   `Employee_Type` VARCHAR(45) NOT NULL,
-  `Rate` DECIMAL(3,2) NULL,
-  `Seniority_Multiplier` DECIMAL(2,2) NULL,
+  `Rate` DECIMAL(8,2) NULL,
+  `Seniority_Multiplier` DECIMAL(3,2) NULL,
   `Overtime_Rate` VARCHAR(45) NULL,
   `Level` VARCHAR(45) NULL,
   PRIMARY KEY (`Employee_Type_ID` ASC),
@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `OAMC_2.2`.`Employee_Type` (
 -- Table `OAMC_2.2`.`Employee`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `OAMC_2.2`.`Employee` (
-  `Employee_ID` INT NOT NULL,
+  `Employee_ID` INT auto_increment NOT NULL,
   `Last_Name` VARCHAR(45) NULL,
   `First_Name` VARCHAR(45) NULL,
   `Salary_Type` VARCHAR(45) NULL,
@@ -53,6 +53,7 @@ CREATE TABLE IF NOT EXISTS `OAMC_2.2`.`Employee` (
   `Employee_Type_ID` INT NOT NULL,
   `Hire_Date` DATE NULL,
   `Years_Experience` INT NULL,
+  `Password` Varchar(45),
   PRIMARY KEY (`Employee_ID`),
   INDEX `fk_Employee_Unit_idx` (`Unit` ASC),
   INDEX `fk_Employee_Employee_Type1_idx` (`Employee_Type_ID` ASC))
