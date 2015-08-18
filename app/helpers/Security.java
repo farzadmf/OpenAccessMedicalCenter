@@ -1,6 +1,7 @@
 package helpers;
 
 import com.avaje.ebean.Ebean;
+import helpers.Config.Roles;
 import models.Staff;
 import play.mvc.Http;
 
@@ -11,17 +12,6 @@ import java.util.List;
  * This class is used to implement a custom security mechanism
  */
 public class Security {
-
-    /**
-     * Roles available in the application
-     */
-    public enum Roles {
-        ADMINISTRATOR,
-        DOCTOR,
-        INTERN,
-        SHIFT_SUPERVISOR,
-        NURSE;
-    }
 
     @Retention(RetentionPolicy.RUNTIME)
     @Target(ElementType.METHOD)

@@ -2,9 +2,7 @@ package controllers;
 
 import com.avaje.ebean.Ebean;
 import helpers.Config;
-import helpers.Security.Authenticated;
 import helpers.Security.Authorized;
-import helpers.Security.Roles;
 import models.Staff;
 import play.data.Form;
 import play.mvc.Controller;
@@ -52,29 +50,29 @@ public class Application extends Controller {
         return ok(index.render("You have logged out of the system. See you later!"));
     }
 
-    @Authorized(role = Roles.ADMINISTRATOR)
+    @Authorized(role = Config.Roles.ADMINISTRATOR)
     public static Result admin() {
-        return ok(views.html.temp.authorized.render(Roles.ADMINISTRATOR.toString()));
+        return ok(views.html.temp.authorized.render(Config.Roles.ADMINISTRATOR.toString()));
     }
 
-    @Authorized(role = Roles.DOCTOR)
+    @Authorized(role = Config.Roles.DOCTOR)
     public static Result doctor() {
-        return ok(views.html.temp.authorized.render(Roles.DOCTOR.toString()));
+        return ok(views.html.temp.authorized.render(Config.Roles.DOCTOR.toString()));
     }
 
-    @Authorized(role = Roles.INTERN)
+    @Authorized(role = Config.Roles.INTERN)
     public static Result intern() {
-        return ok(views.html.temp.authorized.render(Roles.INTERN.toString()));
+        return ok(views.html.temp.authorized.render(Config.Roles.INTERN.toString()));
     }
 
-    @Authorized(role = Roles.SHIFT_SUPERVISOR)
+    @Authorized(role = Config.Roles.SHIFT_SUPERVISOR)
     public static Result shiftSupervisor() {
-        return ok(views.html.temp.authorized.render(Roles.SHIFT_SUPERVISOR.toString()));
+        return ok(views.html.temp.authorized.render(Config.Roles.SHIFT_SUPERVISOR.toString()));
     }
 
-    @Authorized(role = Roles.NURSE)
+    @Authorized(role = Config.Roles.NURSE)
     public static Result nurse() {
-        return ok(views.html.temp.authorized.render(Roles.NURSE.toString()));
+        return ok(views.html.temp.authorized.render(Config.Roles.NURSE.toString()));
     }
 
     public static Result unauthorizedPage() {

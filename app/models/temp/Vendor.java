@@ -1,4 +1,4 @@
-package models;
+package models.temp;
 
 import play.db.ebean.Model;
 
@@ -8,12 +8,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Carrier")
-public class Carrier extends Model {
+@Table(name = "Vendors")
+public class Vendor extends Model {
 
     @Id
-    @Column(name = "Carrier_ID")
-    private Integer carrierId;
+    @Column(name = "Vendor_ID")
+    private Integer vendorId;
 
     @Column(name = "Name")
     private String name;
@@ -26,9 +26,5 @@ public class Carrier extends Model {
 
     @Column(name = "Fax_Number")
     private Integer faxNumber;
-
-    //TODO: do we want question mark here???
-    @Column(name = "Can_Rush?")
-    private Boolean canRush;
 
 }

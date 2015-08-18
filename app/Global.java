@@ -4,7 +4,6 @@ import helpers.Security;
 import helpers.Security.Authenticated;
 import helpers.Security.Authorized;
 import helpers.Security.AuthorizedRoles;
-import helpers.Security.Roles;
 import models.Staff;
 import play.Application;
 import play.GlobalSettings;
@@ -76,7 +75,7 @@ public class Global extends GlobalSettings {
         doctor.setEmail("doctor@staff.com");
         doctor.setUsername("doctor");
         doctor.setPassword("doctor");
-        doctor.setRole(Security.Roles.DOCTOR);
+        doctor.setRole(Config.Roles.DOCTOR);
         Ebean.save(doctor);
 
         Staff admin = new Staff();
@@ -85,7 +84,7 @@ public class Global extends GlobalSettings {
         admin.setEmail("admin@staff.com");
         admin.setUsername("admin");
         admin.setPassword("admin");
-        admin.setRole(Roles.ADMINISTRATOR);
+        admin.setRole(Config.Roles.ADMINISTRATOR);
         admin.save();
 
         Staff intern = new Staff();
@@ -94,7 +93,7 @@ public class Global extends GlobalSettings {
         intern.setEmail("intern@staff.com");
         intern.setUsername("intern");
         intern.setPassword("intern");
-        intern.setRole(Roles.INTERN);
+        intern.setRole(Config.Roles.INTERN);
         intern.save();
 
         Staff supervisor = new Staff();
@@ -103,7 +102,7 @@ public class Global extends GlobalSettings {
         supervisor.setEmail("supervisor@staff.com");
         supervisor.setUsername("supervisor");
         supervisor.setPassword("supervisor");
-        supervisor.setRole(Roles.SHIFT_SUPERVISOR);
+        supervisor.setRole(Config.Roles.SHIFT_SUPERVISOR);
         supervisor.save();
 
         Staff nurse = new Staff();
@@ -112,7 +111,7 @@ public class Global extends GlobalSettings {
         nurse.setEmail("nurse@staff.com");
         nurse.setUsername("nurse");
         nurse.setPassword("nurse");
-        nurse.setRole(Roles.NURSE);
+        nurse.setRole(Config.Roles.NURSE);
         nurse.save();
     }
 }

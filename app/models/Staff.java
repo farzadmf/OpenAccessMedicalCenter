@@ -1,7 +1,7 @@
 package models;
 
 import com.avaje.ebean.Ebean;
-import helpers.Security;
+import helpers.Config.Roles;
 import play.db.ebean.Model;
 
 import javax.persistence.Column;
@@ -25,7 +25,7 @@ public class Staff extends Model {
     @Column(nullable = false)
     private String password;
 
-    private Security.Roles role;
+    private Roles role;
 
     private String firstName;
     private String lastName;
@@ -51,8 +51,8 @@ public class Staff extends Model {
     public void setUsername(String username) { this.username = username; }
     public String getEmail() { return email; }
     public void setEmail(String email) { this.email = email; }
-    public Security.Roles getRole() { return role; }
-    public void setRole(Security.Roles role) { this.role = role; }
+    public Roles getRole() { return role; }
+    public void setRole(Roles role) { this.role = role; }
 
     @Override
     public String toString() {

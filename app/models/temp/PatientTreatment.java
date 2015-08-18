@@ -1,18 +1,19 @@
-package models;
+package models.temp;
 
 import play.db.ebean.Model;
 
 import javax.persistence.*;
+import java.sql.Date;
 
 @Entity
-@Table(name = "Patient_Treatment_Instances_has_Medication")
-public class PatientTreatmentMedication extends Model {
+@Table(name = "Patient_Treatment_Instances")
+public class PatientTreatment extends Model {
 
     @Embeddable
-    public class PatientTreatmentMedicationKey {
-        @Column(name = "Patient_Treatment_Instances_ID")
+    public class PatientTreatmentKey {
+        @Column(name = "Instance_ID")
         public Integer instanceId;
-        @Column(name = "Medication_ID")
+        @Column(name = "Location_Location_ID")
         public Integer locationId;
 
         @Override
@@ -25,16 +26,19 @@ public class PatientTreatmentMedication extends Model {
             if (obj == null)
                 return false;
 
-            if (!(obj instanceof PatientTreatmentMedicationKey))
+            if (!(obj instanceof PatientTreatmentKey))
                 return false;
 
-            PatientTreatmentMedicationKey other = (PatientTreatmentMedicationKey) obj;
+            PatientTreatmentKey other = (PatientTreatmentKey) obj;
             return (other.instanceId.equals(instanceId) && other.locationId.equals(locationId));
         }
     }
 
     @EmbeddedId
-    private PatientTreatmentMedicationKey key;
+    private PatientTreatmentKey key;
 
-    //TODO: add foreign keys for "PatientTreatment" and "Medication"
+    @Column(name = "Treatment_Date")
+    private Date date;
+
+    //TODO: add foreign keys for "patient", "employee", and "treatment"
 }
