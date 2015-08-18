@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `OAMC_2.2`.`Employee` (
 -- Table `OAMC_2.2`.`Service_Type`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `OAMC_2.2`.`Service_Type` (
-  `Service_ID` INT NOT NULL,
+  `Service_ID` INT auto_increment NOT NULL,
   `Service_Name` TINYTEXT NULL,
   `Description` MEDIUMTEXT NULL,
   `Cost` DECIMAL(6,2) NULL,
