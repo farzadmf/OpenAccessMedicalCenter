@@ -10,13 +10,25 @@ import java.util.List;
 @Table(name = "Employee_Type")
 public class EmployeeType extends Model {
 
+    public enum EmployeeTypes {
+        Administrator,
+        Director,
+        Doctor,
+        Nurse,
+        ShiftSupervisor,
+        Intern,
+        Resident,
+        Technician;
+    }
+
     @Id
     @Column(name = "Employee_Type_ID")
     @GeneratedValue
     public Integer employeeTypeId;
 
     @Column(name = "Employee_Type")
-    public String employeeType;
+    @Enumerated(value = EnumType.STRING)
+    public EmployeeTypes employeeType;
 
     @Column(name = "Rate")
     public BigDecimal rate;

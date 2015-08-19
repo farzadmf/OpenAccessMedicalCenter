@@ -1,4 +1,3 @@
-@(isLoggedIn: Boolean, staff: Staff)
 
 <nav class="navbar navbar-default navbar-static-top">
     <div class="container-fluid">
@@ -17,7 +16,7 @@
                 <li class="nav"><a href="">Item 3</a> </li>
             </ul>
             <div class="navbar-right">
-                @if(isLoggedIn) {
+                @if(helpers.Security.isLoggedIn(ctx())) {
                     <span class="navbar-text">Logged in as @helpers.Security.getUserInfo(ctx())</span>
                     <a href="@routes.Application.logout()" class="navbar-text">Logout</a>
                 } else {

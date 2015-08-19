@@ -1,12 +1,11 @@
 package helpers;
 
 import com.avaje.ebean.Ebean;
-import helpers.Config.Roles;
-import models.Staff;
-import play.mvc.Http;
+import models.current.Employee;
+import models.current.EmployeeType;
+import play.mvc.Http.Context;
 
 import java.lang.annotation.*;
-import java.util.List;
 
 /**
  * This class is used to implement a custom security mechanism
@@ -27,38 +26,52 @@ public class Security {
     @Target(ElementType.METHOD)
     @Repeatable(AuthorizedRoles.class)
     public @interface Authorized {
-        Roles role();
+        EmployeeType.EmployeeTypes role();
     }
 
     @Retention(RetentionPolicy.RUNTIME)
     @Target(ElementType.METHOD)
     public @interface Authenticated { }
 
-    public static boolean isAuthenticated(Http.Context context) {
+    public static boolean isAuthenticated(Context context) {
         return context.session().containsKey("username");
     }
 
-    public static boolean isAuthorized(Http.Context context, Authorized[] roles) {
+    public static boolean isAuthorized(Context context, Authorized[] roles) {
         String username = context.session().get("username");
-        List<Staff> staffs = Staff.getByUsername(username);
+        Employee employee = Employee.getByUsername(context.session().get("username"));
 
-        if (staffs.size() == 0 || staffs.size() > 1)
+        if (employee == null)
             return false;
 
-        Staff staff = staffs.get(0);
         for (Authorized authorized: roles)
-            if (staff.getRole() == authorized.role())
+            if (employee.employeeType.employeeType == authorized.role())
                 return true;
 
         return false;
     }
 
-    public static String getUserInfo(Http.Context context) {
-        Staff staff = Ebean.find(Staff.class)
+    public static boolean login(Context context, String username, String password) {
+        Employee employee = Ebean.find(Employee.class)
                 .where()
-                .eq("username", context.session().get("username"))
-                .findList().get(0);
+                .eq("username", username)
+                .eq("password", password)
+                .findUnique();
 
-        return String.format("%s %s", staff.getFirstName(), staff.getLastName());
+        if (employee != null) {
+            context.session().put("username", username);
+            return true;
+        }
+
+        return false;
+    }
+
+    public static boolean isLoggedIn(Context context) {
+        return context.session().containsKey("username");
+    }
+
+    public static String getUserInfo(Context context) {
+        Employee employee = Employee.getByUsername(context.session().get("username"));
+        return String.format("%s %s", employee.firstName, employee.lastName);
     }
 }

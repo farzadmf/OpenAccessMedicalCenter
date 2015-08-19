@@ -4,7 +4,8 @@ import helpers.Security;
 import helpers.Security.Authenticated;
 import helpers.Security.Authorized;
 import helpers.Security.AuthorizedRoles;
-import models.Staff;
+import models.current.EmployeeType;
+import models.current.EmployeeType.EmployeeTypes;
 import play.Application;
 import play.GlobalSettings;
 import play.libs.F;
@@ -13,6 +14,7 @@ import play.mvc.Http;
 import play.mvc.SimpleResult;
 
 import java.lang.reflect.Method;
+import java.math.BigDecimal;
 
 public class Global extends GlobalSettings {
 
@@ -67,51 +69,14 @@ public class Global extends GlobalSettings {
 
     @Override
     public void onStart(Application application) {
-        Ebean.delete(Ebean.find(Staff.class).findList());
+//        insertStaff();
+        Ebean.delete(Ebean.find(EmployeeType.class).findList());
 
-        Staff doctor = new Staff();
-        doctor.setFirstName("Doctor FirstName");
-        doctor.setLastName("Doctor LastName");
-        doctor.setEmail("doctor@staff.com");
-        doctor.setUsername("doctor");
-        doctor.setPassword("doctor");
-        doctor.setRole(Config.Roles.DOCTOR);
-        Ebean.save(doctor);
-
-        Staff admin = new Staff();
-        admin.setFirstName("Admin FirstName");
-        admin.setLastName("Admin LastName");
-        admin.setEmail("admin@staff.com");
-        admin.setUsername("admin");
-        admin.setPassword("admin");
-        admin.setRole(Config.Roles.ADMINISTRATOR);
-        admin.save();
-
-        Staff intern = new Staff();
-        intern.setFirstName("Intern FirstName");
-        intern.setLastName("Intern LastName");
-        intern.setEmail("intern@staff.com");
-        intern.setUsername("intern");
-        intern.setPassword("intern");
-        intern.setRole(Config.Roles.INTERN);
-        intern.save();
-
-        Staff supervisor = new Staff();
-        supervisor.setFirstName("Supervisor FirstName");
-        supervisor.setLastName("Supervisor LastName");
-        supervisor.setEmail("supervisor@staff.com");
-        supervisor.setUsername("supervisor");
-        supervisor.setPassword("supervisor");
-        supervisor.setRole(Config.Roles.SHIFT_SUPERVISOR);
-        supervisor.save();
-
-        Staff nurse = new Staff();
-        nurse.setFirstName("Nurse FirstName");
-        nurse.setLastName("Nurse LastName");
-        nurse.setEmail("nurse@staff.com");
-        nurse.setUsername("nurse");
-        nurse.setPassword("nurse");
-        nurse.setRole(Config.Roles.NURSE);
-        nurse.save();
+        EmployeeType employeeType1 = new EmployeeType();
+        employeeType1.employeeType = EmployeeTypes.Administrator;
+        employeeType1.overtimeRate = new BigDecimal(4);
+        employeeType1.rate = new BigDecimal(5);
+        employeeType1.seniorityMultiplier = new BigDecimal(6);
+        Ebean.save(employeeType1);
     }
 }

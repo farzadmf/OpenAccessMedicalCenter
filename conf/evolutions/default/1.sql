@@ -15,15 +15,17 @@ create table Employee (
   password                  varchar(255),
   unit_id                   integer,
   employee_type_id          integer,
+  constraint uq_Employee_user_name unique (user_name),
   constraint pk_Employee primary key (Employee_ID))
 ;
 
 create table Employee_Type (
   Employee_Type_ID          integer auto_increment not null,
-  Employee_Type             varchar(255),
+  Employee_Type             varchar(15),
   Rate                      decimal(38),
   Seniority_Multiplier      decimal(38),
   Overtime_Rate             decimal(38),
+  constraint ck_Employee_Type_Employee_Type check (Employee_Type in ('Administrator','Director','Doctor','Nurse','ShiftSupervisor','Intern','Resident','Technician')),
   constraint pk_Employee_Type primary key (Employee_Type_ID))
 ;
 

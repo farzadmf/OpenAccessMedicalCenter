@@ -15,7 +15,7 @@
         <script src="@routes.Assets.at("javascripts/bootstrap.min.js")" type="text/javascript"></script>
     </head>
     <body>
-        @navbar.render(Secured.isLoggedIn(ctx()), null)
+        @navbar.render()
         @content
     </body>
 </html>

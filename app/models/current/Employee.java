@@ -1,5 +1,6 @@
 package models.current;
 
+import com.avaje.ebean.Ebean;
 import play.db.ebean.Model;
 
 import javax.persistence.*;
@@ -31,7 +32,7 @@ public class Employee extends Model {
     @Column(name = "Years_Experience")
     public Integer yearsExperience;
 
-    @Column(name = "user_name")
+    @Column(name = "user_name", unique = true)
     public String username;
 
     @Column(name = "password")
@@ -45,4 +46,11 @@ public class Employee extends Model {
     @ManyToOne
     @JoinColumn(name = "employee_type_id")
     public EmployeeType employeeType;
+
+    public static Employee getByUsername(String username) {
+        return Ebean.find(Employee.class)
+                .where()
+                .eq("username", username)
+                .findUnique();
+    }
 }

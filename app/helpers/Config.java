@@ -9,14 +9,14 @@ public class Config {
         YEARLY
     }
 
-    /**
-     * Roles available in the application
-     */
-    public enum Roles {
-        ADMINISTRATOR,
-        DOCTOR,
-        INTERN,
-        SHIFT_SUPERVISOR,
-        NURSE;
-    }
+//    /**
+//     * EmployeeTypes available in the application
+//     */
+//    public enum EmployeeTypes {
+//        ADMINISTRATOR,
+//        DOCTOR,
+//        INTERN,
+//        SHIFT_SUPERVISOR,
+//        NURSE;
+//    }
 }
