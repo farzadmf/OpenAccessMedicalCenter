@@ -18,4 +18,7 @@ public class Unit extends Model {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "unit")
     public List<Employee> employees;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "unit")
+    public List<Location> locations;
 }

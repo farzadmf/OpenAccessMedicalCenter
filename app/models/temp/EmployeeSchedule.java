@@ -1,8 +1,11 @@
 package models.temp;
 
+import models.current.Employee;
+import models.current.Treatment;
 import play.db.ebean.Model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "EmployeeSchedule")
@@ -34,7 +37,14 @@ public class EmployeeSchedule extends Model {
     }
 
     @EmbeddedId
-    private EmployeeScheduleKey key;
+    public EmployeeScheduleKey key;
 
     //TODO: add foreign keys for "Employee" and "PatientTreatment"
+    @ManyToOne
+    @JoinColumn(name = "Employee_ID")
+    public List<Employee> employees;
+
+    @ManyToOne
+    @JoinColumn(name = "Patient_Treatment_ID")
+    public List<Treatment> treatments;
 }

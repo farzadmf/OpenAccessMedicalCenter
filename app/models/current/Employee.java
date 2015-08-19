@@ -6,6 +6,7 @@ import play.db.ebean.Model;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "Employee")
@@ -47,19 +48,13 @@ public class Employee extends Model {
     @JoinColumn(name = "employee_type_id")
     public EmployeeType employeeType;
 
+    @OneToMany(mappedBy = "employee")
+    public List<PatientTreatment> treatments;
+
     public static Employee getByUsername(String username) {
         return Ebean.find(Employee.class)
                 .where()
                 .eq("username", username)
                 .findUnique();
     }
-
-//    public static EmployeeTypes getEmployeeType(String username) {
-//        Employee employee = getByUsername(username);
-//
-//        if (employee == null)
-//            return null;
-//
-//        return employee.employeeType.employeeType;
-//    }
 }
