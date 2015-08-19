@@ -1,6 +1,7 @@
 package models.current;
 
 import com.avaje.ebean.Ebean;
+import models.current.EmployeeType.EmployeeTypes;
 import play.db.ebean.Model;
 
 import javax.persistence.*;
@@ -38,7 +39,6 @@ public class Employee extends Model {
     @Column(name = "password")
     public String password;
 
-    //TODO: check the foreign keys for "unit" and "employeeType"
     @ManyToOne
     @JoinColumn(name = "unit_id")
     public Unit unit;
@@ -53,4 +53,13 @@ public class Employee extends Model {
                 .eq("username", username)
                 .findUnique();
     }
+
+//    public static EmployeeTypes getEmployeeType(String username) {
+//        Employee employee = getByUsername(username);
+//
+//        if (employee == null)
+//            return null;
+//
+//        return employee.employeeType.employeeType;
+//    }
 }

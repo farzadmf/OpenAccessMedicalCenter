@@ -72,6 +72,7 @@ public class Security {
 
     public static String getUserInfo(Context context) {
         Employee employee = Employee.getByUsername(context.session().get("username"));
-        return String.format("%s %s", employee.firstName, employee.lastName);
+        return String.format("%s %s (%s)", employee.firstName, employee.lastName,
+                employee.employeeType.employeeType);
     }
 }
