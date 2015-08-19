@@ -70,13 +70,13 @@ public class Global extends GlobalSettings {
     @Override
     public void onStart(Application application) {
 //        insertStaff();
-        Ebean.delete(Ebean.find(EmployeeType.class).findList());
-
-        EmployeeType employeeType1 = new EmployeeType();
-        employeeType1.employeeType = EmployeeTypes.Administrator;
-        employeeType1.overtimeRate = new BigDecimal(4);
-        employeeType1.rate = new BigDecimal(5);
-        employeeType1.seniorityMultiplier = new BigDecimal(6);
-        Ebean.save(employeeType1);
+//        Ebean.delete(Ebean.find(EmployeeType.class).findList());
+//
+//        EmployeeType employeeType1 = new EmployeeType();
+//        employeeType1.employeeType = EmployeeTypes.Administrator;
+//        employeeType1.overtimeRate = new BigDecimal(4);
+//        employeeType1.rate = new BigDecimal(5);
+//        employeeType1.seniorityMultiplier = new BigDecimal(6);
+//        Ebean.save(employeeType1);
     }
 }
