@@ -22,6 +22,7 @@ create table Employee (
 create table Employee_Type (
   Employee_Type_ID          integer auto_increment not null,
   Employee_Type             varchar(15),
+  Access_Level              integer,
   Rate                      decimal(38),
   Seniority_Multiplier      decimal(38),
   Overtime_Rate             decimal(38),

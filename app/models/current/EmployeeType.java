@@ -30,6 +30,9 @@ public class EmployeeType extends Model {
     @Enumerated(value = EnumType.STRING)
     public EmployeeTypes employeeType;
 
+    @Column(name = "Access_Level")
+    public Integer accessLevel;
+
     @Column(name = "Rate")
     public BigDecimal rate;
 

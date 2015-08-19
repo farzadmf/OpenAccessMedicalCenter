@@ -1,8 +1,9 @@
+@(accessLevel: Int, pageTitle: String)
 
 <nav class="navbar navbar-default navbar-static-top">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a href="@routes.Application.index()" class="navbar-brand">OAMC</a>
+            <a href="@routes.Application.index()" class="navbar-brand"><img class="oamc-brand" src="@routes.Assets.at("images/oamc_logo.png")" alt="logo" /></a>
             <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-links">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -11,9 +12,37 @@
         </div>
         <div class="navbar-collapse collapse" id="navbar-links">
             <ul class="nav navbar-nav">
-                <li class="nav"><a href="">Item 1</a></li>
-                <li class="nav"><a href="">Item 2</a> </li>
-                <li class="nav"><a href="">Item 3</a> </li>
+                @if(accessLevel == -1) {
+                    <li class="nav"><a href="">Palliative Care Unit</a></li>
+                    <li class="nav"><a href="">Children's Unit</a></li>
+                    <li class="nav"><a href="">Surgical Unit</a></li>
+                } else {
+                    @if(accessLevel >= 6) {
+                        <li class="nav"><a href="">See My Payroll</a></li>
+                        <li class="nav"><a href="">Patient Lookup</a></li>
+                        <li class="nav @if(pageTitle == "employeeList") {active}"><a href="@routes.Employees.list(0)">View Employee Info</a></li>
+                        <li class="nav"><a href="">Order Supply</a></li>
+                        <li class="nav"><a href="">Schedule Surgeries</a></li>
+                        <li class="nav"><a href="">View Employee Info</a></li>
+                    } else {
+                        @if(accessLevel >= 5) {
+                            <li class="nav"><a href="">See My Payroll</a></li>
+                            <li class="nav"><a href="">Patient Lookup</a></li>
+                            <li class="nav"><a href="">View Employee Info</a></li>
+                            <li class="nav"><a href="">Order Supply</a></li>
+                            <li class="nav"><a href="">Schedule Surgeries</a></li>
+                        } else {
+                            @if(accessLevel >= 4) {
+                                <li class="nav"><a href="">See My Payroll</a></li>
+                                <li class="nav"><a href="">Patient Lookup</a></li>
+                            } else {
+                                @if(accessLevel >= 0) {
+                                    <li class="nav"><a href="">See My Payroll</a></li>
+                                }
+                            }
+                        }
+                    }
+                }
             </ul>
             <div class="navbar-right">
                 @if(helpers.Security.isLoggedIn(ctx())) {

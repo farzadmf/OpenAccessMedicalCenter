@@ -1,0 +1,19 @@
+
+img.oamc-brand {
+    height: 80px;
+    width: 80px;
+}
+
+.navbar-header {
+    height: 80px;
+}
+
+.nav {
+    margin-top: 10px;
+    font-size: larger;
+}
+
+.navbar-right {
+    margin-top: 15px;
+    font-size: larger;
+}

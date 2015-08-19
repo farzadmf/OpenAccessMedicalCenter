@@ -1,0 +1,56 @@
+@(currentPage: com.avaje.ebean.Page[models.current.Employee])
+
+@link(newPage: Int, sortBy: Int) = @{
+    routes.Employees.list(newPage, sortBy)
+}
+
+@main("Employees") {
+
+    <div class="container">
+        <table class="col-sm-12 table table-bordered table-striped table-hovered">
+            <thead>
+                <tr>
+                    <th><a href="@link(0, 1)">Employee ID</a></th>
+                    <th><a href="@link(0, 2)>">Last Name</a></th>
+                    <th><a href="@link(0, 3)">First Name</a></th>
+                    <th><a href="@link(0, 4)">Hire Date</a></th>
+                    <th><a href="@link(0, 5)">Years of Experience</a></th>
+                </tr>
+            </thead>
+            <tbody>
+                @for(employee <- currentPage.getList) {
+                    <tr>
+                        <td><a href="@routes.Employees.edit(employee.employeeId)">@employee.employeeId</a></td>
+                        <td>@employee.lastName</td>
+                        <td>@employee.firstName</td>
+                        <td>@employee.hireDate</td>
+                        <td>@employee.yearsExperience</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <ul class="pagination">
+            @if(currentPage.hasPrev) {
+                <li class="prev">
+                    <a href="@routes.Employees.list(currentPage.getPageIndex - 1)">&laquo; Previous</a>
+                </li>
+            } else {
+                <li class="prev disabled">
+                    <a>&larr; Previous</a>
+                </li>
+            }
+            <li class="current">
+                <a>Displaying @currentPage.getDisplayXtoYofZ(" to "," of ")</a>
+            </li>
+            @if(currentPage.hasNext) {
+                <li class="next">
+                    <a href="@routes.Employees.list(currentPage.getPageIndex + 1)">Next &rarr;</a>
+                </li>
+            } else {
+                <li class="next disabled">
+                    <a>Next &raquo;</a>
+                </li>
+            }
+        </ul>
+    </div>
+}

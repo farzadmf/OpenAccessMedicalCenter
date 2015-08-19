@@ -75,4 +75,20 @@ public class Security {
         return String.format("%s %s (%s)", employee.firstName, employee.lastName,
                 employee.employeeType.employeeType);
     }
+
+    public static Integer getAccessLevel(Context context) {
+        if (!(context.session().containsKey("username")))
+            return -1;
+
+        EmployeeType employeeType = Ebean.find(Employee.class)
+                .fetch("employeeType")
+                .where()
+                .eq("user_name", context.session().get("username"))
+                .findUnique().employeeType;
+
+        return Ebean.find(EmployeeType.class)
+                .where()
+                .eq("Employee_Type", employeeType.employeeType)
+                .findUnique().accessLevel;
+    }
 }
