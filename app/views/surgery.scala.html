@@ -3,6 +3,49 @@
 
     <div class="container col-sm-8 col-sm-offset-2">
         <h1>Surgical Unit</h1>
+
+        <div class="row visible-lg visible-md" style="margin-top: 30px; margin-bottom: 30px;">
+            @*<div class="carousel slide col-sm-10 col-sm-offset-1 col-lg-8 col-lg-offset-2"*@
+            <div class="carousel slide col-sm-10 col-sm-offset-1"
+            id="theCarousel" data-interval="2000">
+
+                <ol class="carousel-indicators">
+                    <li data-target="#theCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#theCarousel" data-slide-to="1"></li>
+                    <li data-target="#theCarousel" data-slide-to="2"></li>
+                    <li data-target="#theCarousel" data-slide-to="3"></li>
+                </ol>
+
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <img src="@routes.Assets.at("images/surgery_unit1.jpg")" alt="1" class="img-responsive">
+                        <div class="carousel-caption">
+                            <p>Modern facilities with the latest technology</p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="@routes.Assets.at("images/surgery_unit2.jpg")" alt="2" class="img-responsive">
+                        <div class="carousel-caption">
+                            <p>Dedicated professionals with decades of experience</p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="@routes.Assets.at("images/surgery_unit3.jpg")" alt="3" class="img-responsive">
+                        <div class="carousel-caption">
+                            <p>The finest surgical teams in Quebec</p>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="#theCarousel" class="carousel-control left" data-slide="prev">
+                    <span class="icon-prev"></span>
+                </a>
+                <a href="#theCarousel" class="carousel-control right" data-slide="next">
+                    <span class="icon-next"></span>
+                </a>
+
+            </div>
+        </div>
         <div class="well">
             <p class="text-justify">
                 The OAMC Surgical unit provides high-risk medical services and operative procedures.
@@ -15,4 +58,10 @@
             </p>
         </div>
     </div>
+
+    <script>
+        $(function () {
+            $("#theCarousel").carousel();
+        });
+    </script>
 }

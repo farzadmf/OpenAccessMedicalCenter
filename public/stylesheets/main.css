@@ -4,6 +4,11 @@
     padding: 30px;
     margin-top: 50px;
 }
+
+#theCarousel img {
+    width: 800px;
+    height: 380px;
+}
 /*
 body {
     background-image: url("/Assets/images/main_image.jpg");
