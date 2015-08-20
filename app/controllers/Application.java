@@ -9,14 +9,17 @@ import models.current.EmployeeType.EmployeeTypes;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
+import views.html.children;
 import views.html.index;
+import views.html.palliative;
+import views.html.surgery;
 
 import java.util.List;
 
 public class Application extends Controller {
 
     public static Result index() {
-        return ok(index.render("Your new application is ready."));
+        return ok(index.render());
     }
 
     public static Result login() {
@@ -42,10 +45,22 @@ public class Application extends Controller {
 
     public static Result logout() {
         session().clear();
-        return ok(index.render("You have logged out of the system. See you later!"));
+        return ok(index.render());
     }
 
     public static Result unauthorizedPage() {
         return unauthorized(views.html.temp.unauthorized.render());
+    }
+
+    public static Result palliative() {
+        return ok(palliative.render());
+    }
+
+    public static Result children() {
+        return ok(children.render());
+    }
+
+    public static Result surgery() {
+        return ok(surgery.render());
     }
 }

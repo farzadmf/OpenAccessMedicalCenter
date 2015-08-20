@@ -1,0 +1,73 @@
+@(patient: models.current.Patient, treatments: List[models.current.PatientTreatment])
+
+@main("Patient History") {
+    <div class="col-sm-8 col-sm-offset-2 form-horizontal">
+        <h3>Patient Information for patient with ID '@patient.patientId':</h3>
+        <hr>
+        <div class="form-group">
+            <label for="firstName" class="control-label col-sm-3">First Name: </label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" readonly="readonly" value="@patient.firstName"
+                       name="firstName" id="firstName">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="lastName" class="control-label col-sm-3">Last Name: </label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" readonly="readonly" value="@patient.lastName"
+                name="lastName" id="lastName">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="phoneNumber" class="control-label col-sm-3">Phone Number: </label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" readonly="readonly" value="@patient.phoneNumber"
+                name="phoneNumber" id="phoneNumber">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="address" class="control-label col-sm-3">Address: </label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" readonly="readonly" value="@patient.address"
+                name="address" id="address">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="medicareNumber" class="control-label col-sm-3">Medicare Number: </label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" readonly="readonly" value="@patient.medicareNumber"
+                name="medicareNumber" id="medicareNumber">
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-8 col-sm-offset-2">
+        <hr>
+        <h3>Treatment History:</h3>
+        @if(treatments.isEmpty) {
+            <div class="well">
+                <p class="text-danger">There is no treatment history for this patient in the database.</p>
+            </div>
+        } else {
+            <table class="table table-bordered table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Treatment Date</th>
+                        <th>Employee</th>
+                        <th>Treatment</th>
+                        <th>Location</th>
+                </tr>
+                </thead>
+                <tbody>
+                    @for(treatment <- treatments) {
+                        <tr>
+                            <td>@treatment.date</td>
+                            <td>@treatment.employee.firstName @treatment.employee.lastName (@treatment.employee.employeeType.employeeType)</td>
+                            <td><span class="pull-left">@treatment.treatment.name</span><span style="margin-right: 5px;" class="pull-right">(@{String.format("$%,5.2f", treatment.treatment.cost)})</span></td>
+                            <td>Unit: @treatment.location.unit.name, Floor: @treatment.location.floor, Room: @treatment.location.room</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+}

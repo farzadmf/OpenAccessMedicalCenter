@@ -2,12 +2,10 @@ package controllers;
 
 import com.avaje.ebean.Ebean;
 import com.avaje.ebean.Page;
-import com.avaje.ebean.PagingList;
 import helpers.Security.Authorized;
 import models.current.Employee;
 import models.current.EmployeeType;
 import models.current.EmployeeType.EmployeeTypes;
-import play.api.data.validation.ValidationError;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -15,7 +13,6 @@ import views.html.employeeEdit;
 import views.html.employeeList;
 
 import java.util.List;
-import java.util.Map;
 
 public class Employees extends Controller {
 
@@ -33,6 +30,8 @@ public class Employees extends Controller {
         return ok(employeeList.render(employeePage, sortBy, order));
     }
 
+    @Authorized(role = EmployeeTypes.Administrator)
+    @Authorized(role = EmployeeTypes.Director)
     public static Result edit(int employeeId) {
         Employee employee = Ebean.find(Employee.class, employeeId);
         Form<Employee> employeeForm = Form.form(Employee.class).fill(employee);
@@ -45,7 +44,6 @@ public class Employees extends Controller {
         Form<Employee> employeeForm = Form.form(Employee.class).bindFromRequest();
         EmployeeType newEmployeeType = Ebean.find(EmployeeType.class, employeeForm.data().get("EmployeeType"));
 
-//        Employee originalEmployee = Ebean.find(Employee.class, employeeForm.field("employeeId").value());
         Employee originalEmployee = Ebean.find(Employee.class, employeeForm.data().get("employeeId"));
         originalEmployee.firstName = employeeForm.data().get("FirstName");
         originalEmployee.lastName = employeeForm.data().get("LastName");

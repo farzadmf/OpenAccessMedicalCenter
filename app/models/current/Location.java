@@ -12,17 +12,17 @@ public class Location extends Model {
     @Id
     @Column(name = "Location_ID")
     @GeneratedValue
-    private Integer locationId;
+    public Integer locationId;
 
     @Column(name = "Floor")
-    private Integer floor;
+    public Integer floor;
 
     @Column(name = "Room")
-    private Integer room;
+    public Integer room;
 
     //TODO: Are we sure we want bed-count to be a string
     @Column(name = "BedCount")
-    private Integer bedCount;
+    public Integer bedCount;
 
     @ManyToOne
     @JoinColumn(name = "Unit_ID")

@@ -39,10 +39,10 @@ public class PatientTreatment extends Model {
 //    }
 //
 //    @EmbeddedId
-//    private PatientTreatmentKey key;
+//    public PatientTreatmentKey key;
 
     @Column(name = "Treatment_Date")
-    private Date date;
+    public Date date;
 
     //TODO: add foreign keys for "patient", "employee", and "treatment"
     @ManyToOne

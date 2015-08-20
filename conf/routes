@@ -4,15 +4,20 @@
 
 # Home page
 GET         /                        controllers.Application.index()
+GET         /palliative              controllers.Application.palliative()
+GET         /children                controllers.Application.children()
+GET         /surgery                 controllers.Application.surgery()
+
 GET         /login                   controllers.Application.login()
 POST        /login                   controllers.Application.postLogin()
 GET         /logout                  controllers.Application.logout()
 
 GET         /employees               controllers.Employees.list(page: Int ?= 0, sortBy: Int ?= 1, order: String ?= "asc")
-#GET         /employees/:page/:sortBy        controllers.Employees.list(page: Int, sortBy: Int)
-#GET         /employees/:page                controllers.Employees.list(page: Int, sortBy: Int ?= 1)
 GET         /employee/:id            controllers.Employees.edit(id: Int)
 POST        /employee/               controllers.Employees.save()
+
+GET         /patient/:id             controllers.Patients.history(id: Int)
+GET         /patients                controllers.Patients.list(page: Int ?= 0, sortBy: Int ?= 1, order: String ?= "asc")
 
 # This are just for testing the authorization functionality
 GET         /unauthorizedPage        controllers.Application.unauthorizedPage()

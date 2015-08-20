@@ -14,21 +14,20 @@
         <div class="navbar-collapse collapse" id="navbar-links">
             <ul class="nav navbar-nav">
                 @if(accessLevel == -1) {
-                    <li class="nav"><a href="">Palliative Care Unit</a></li>
-                    <li class="nav"><a href="">Children's Unit</a></li>
-                    <li class="nav"><a href="">Surgical Unit</a></li>
+                    <li class="nav @if(pageTitle.contains("palliative")) {active}"><a href="@routes.Application.palliative()">Palliative Care Unit</a></li>
+                    <li class="nav @if(pageTitle.contains("children")) {active}"><a href="@routes.Application.children()">Children's Unit</a></li>
+                    <li class="nav @if(pageTitle.contains("surgical")) {active}"><a href="@routes.Application.surgery()">Surgical Unit</a></li>
                 } else {
                     @if(accessLevel >= 6) {
                         <li class="nav"><a href="">See My Payroll</a></li>
-                        <li class="nav"><a href="">Patient Lookup</a></li>
+                        <li class="nav @if(pageTitle == "patients") {active}"><a href="@routes.Patients.list(0)">Patient Lookup</a></li>
                         <li class="nav @if(pageTitle == "employees") {active}"><a href="@routes.Employees.list(0)">View Employee Info</a></li>
                         <li class="nav"><a href="">Order Supply</a></li>
                         <li class="nav"><a href="">Schedule Surgeries</a></li>
-                        <li class="nav"><a href="">View Employee Info</a></li>
                     } else {
                         @if(accessLevel >= 5) {
                             <li class="nav"><a href="">See My Payroll</a></li>
-                            <li class="nav"><a href="">Patient Lookup</a></li>
+                            <li class="nav @if(pageTitle == "patients") {active}"><a href="@routes.Patients.list(0)">Patient Lookup</a></li>
                             <li class="nav @if(pageTitle == "employees") {active}"><a href="@routes.Employees.list(0)">View Employee Info</a></li>
                             <li class="nav"><a href="">Order Supply</a></li>
                             <li class="nav"><a href="">Schedule Surgeries</a></li>
