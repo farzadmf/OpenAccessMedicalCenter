@@ -34,7 +34,7 @@
                         } else {
                             @if(accessLevel >= 4) {
                                 <li class="nav"><a href="">See My Payroll</a></li>
-                                <li class="nav"><a href="">Patient Lookup</a></li>
+                                <li class="nav @if(pageTitle == "patients") {active}"><a href="@routes.Patients.list(0)">Patient Lookup</a></li>
                             } else {
                                 @if(accessLevel >= 0) {
                                     <li class="nav"><a href="">See My Payroll</a></li>
