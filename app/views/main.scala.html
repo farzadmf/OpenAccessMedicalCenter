@@ -16,8 +16,23 @@
     </head>
     <body>
         @navbar.render(helpers.Security.getAccessLevel(ctx()), title.toLowerCase)
+
+        @if(flash.containsKey("success")) {
+            <div id="flashSuccess" class="alert alert-success">
+                <strong>Done! </strong>@flash.get("success")
+                <button type="button" id="closeFlashMessage" class="close"><span>&times;</span></button>
+            </div>
+        }
         <div class="container-fluid">
             @content
         </div>
     </body>
+
+    <script>
+        $(function() {
+            $('#closeFlashMessage').click(function() {
+                $('#flashSuccess').fadeOut("slow");
+            });
+        });
+    </script>
 </html>

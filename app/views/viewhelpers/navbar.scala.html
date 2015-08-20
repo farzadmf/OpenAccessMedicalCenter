@@ -3,7 +3,8 @@
 <nav class="navbar navbar-default navbar-static-top">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a href="@routes.Application.index()" class="navbar-brand"><img class="oamc-brand" src="@routes.Assets.at("images/oamc_logo.png")" alt="logo" /></a>
+            @*<a href="@routes.Application.index()" class="navbar-brand"><img class="oamc-brand" src="@routes.Assets.at("images/oamc_logo.png")" alt="logo" /></a>*@
+            <a href="@routes.Application.index()" class="navbar-brand">OAMC</a>
             <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-links">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -20,7 +21,7 @@
                     @if(accessLevel >= 6) {
                         <li class="nav"><a href="">See My Payroll</a></li>
                         <li class="nav"><a href="">Patient Lookup</a></li>
-                        <li class="nav @if(pageTitle == "employeeList") {active}"><a href="@routes.Employees.list(0)">View Employee Info</a></li>
+                        <li class="nav @if(pageTitle == "employees") {active}"><a href="@routes.Employees.list(0)">View Employee Info</a></li>
                         <li class="nav"><a href="">Order Supply</a></li>
                         <li class="nav"><a href="">Schedule Surgeries</a></li>
                         <li class="nav"><a href="">View Employee Info</a></li>
@@ -28,7 +29,7 @@
                         @if(accessLevel >= 5) {
                             <li class="nav"><a href="">See My Payroll</a></li>
                             <li class="nav"><a href="">Patient Lookup</a></li>
-                            <li class="nav"><a href="">View Employee Info</a></li>
+                            <li class="nav @if(pageTitle == "employees") {active}"><a href="@routes.Employees.list(0)">View Employee Info</a></li>
                             <li class="nav"><a href="">Order Supply</a></li>
                             <li class="nav"><a href="">Schedule Surgeries</a></li>
                         } else {

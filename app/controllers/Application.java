@@ -34,17 +34,7 @@ public class Application extends Controller {
         Employee employee = employeeForm.get();
 
         if (!Security.login(ctx(), employee.username, employee.password))
-            return ok("Username password don't exist");
-//        Staff staff = employeeForm.get();
-//
-//        List<Staff> staffs = Ebean.find(Staff.class)
-//                .where()
-//                .eq("username", staff.getUsername())
-//                .eq("password", staff.getPassword())
-//                .findList();
-//
-//        if (staffs.size() == 0)
-//            return ok("Username password don't exist");
+            return ok(views.html.temp.noUserPassword.render());
 
         String originalUrl = session().get("lastVisitedUrl");
         return redirect(originalUrl == null ? "/" : originalUrl);

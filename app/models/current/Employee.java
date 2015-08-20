@@ -48,7 +48,7 @@ public class Employee extends Model {
     @JoinColumn(name = "employee_type_id")
     public EmployeeType employeeType;
 
-    @OneToMany(mappedBy = "employee")
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
     public List<PatientTreatment> treatments;
 
     public static Employee getByUsername(String username) {
