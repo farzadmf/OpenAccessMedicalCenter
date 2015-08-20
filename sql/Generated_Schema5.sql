@@ -235,7 +235,7 @@ CREATE TABLE IF NOT EXISTS `OAMC_2.2`.`Room_Supply` (
 ;
 
 
--- -----------------------------------------------------
+-- -------------employee----------------------------------------
 -- Table `OAMC_2.2`.`EmployeeSchedule`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `OAMC_2.2`.`EmployeeSchedule` (
