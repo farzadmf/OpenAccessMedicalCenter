@@ -1,4 +1,4 @@
-package models.temp;
+package models.current;
 
 import play.db.ebean.Model;
 
@@ -36,16 +36,25 @@ public class AssignedShift extends Model {
     }
 
     @EmbeddedId
-    private AssignedShiftKey key;
+    public AssignedShiftKey key;
 
     @Column(name = "Date")
-    private Date date;
+    public Date date;
 
     @Column(name = "Override_Start")
-    private Time overrideStart;
+    public Time overrideStart;
 
     @Column(name = "Override_Duration")
-    private Time overrideDuration;
+    public Time overrideDuration;
 
-    //TODO: add foreign key for "Shift", "Employee", "Supervisor"
+    @Column(name = "Supervisor")
+    public Boolean isSupervisor;
+
+    @ManyToOne
+    @JoinColumn(name = "Shift_ID")
+    public Shift shift;
+
+    @ManyToOne
+    @JoinColumn(name = "Employee_ID")
+    public Employee employee;
 }

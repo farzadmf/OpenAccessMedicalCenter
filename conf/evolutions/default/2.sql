@@ -3,14 +3,14 @@
 INSERT INTO unit(Name) VALUES ('Palliative'), ('Children'), ('Surgical');
 
 -- Insert employee types
-INSERT INTO employee_type(Employee_Type, Rate, Seniority_Multiplier, Overtime_Rate, Access_Level) VALUES ('Administrator', 2, 3, 4, 5);
-INSERT INTO employee_type(Employee_Type, Rate, Seniority_Multiplier, Overtime_Rate, Access_Level) VALUES ('Director', 2, 3, 4, 6);
-INSERT INTO employee_type(Employee_Type, Rate, Seniority_Multiplier, Overtime_Rate, Access_Level) VALUES ('Doctor', 2, 3, 4, 4);
-INSERT INTO employee_type(Employee_Type, Rate, Seniority_Multiplier, Overtime_Rate, Access_Level) VALUES ('Nurse', 2, 3, 4, 1);
-INSERT INTO employee_type(Employee_Type, Rate, Seniority_Multiplier, Overtime_Rate, Access_Level) VALUES ('ShiftSupervisor', 2, 3, 4, 2);
-INSERT INTO employee_type(Employee_Type, Rate, Seniority_Multiplier, Overtime_Rate, Access_Level) VALUES ('Intern', 2, 3, 4, 3);
-INSERT INTO employee_type(Employee_Type, Rate, Seniority_Multiplier, Overtime_Rate, Access_Level) VALUES ('Resident', 2, 3, 4, 3);
-INSERT INTO employee_type(Employee_Type, Rate, Seniority_Multiplier, Overtime_Rate, Access_Level) VALUES ('Technician', 2, 3, 4, 0);
+INSERT INTO employee_type(Employee_Type, Rate, Seniority_Multiplier, Overtime_Rate, Level) VALUES ('Administrator', 2, 3, 4, 5);
+INSERT INTO employee_type(Employee_Type, Rate, Seniority_Multiplier, Overtime_Rate, Level) VALUES ('Director', 2, 3, 4, 6);
+INSERT INTO employee_type(Employee_Type, Rate, Seniority_Multiplier, Overtime_Rate, Level) VALUES ('Doctor', 2, 3, 4, 4);
+INSERT INTO employee_type(Employee_Type, Rate, Seniority_Multiplier, Overtime_Rate, Level) VALUES ('Nurse', 2, 3, 4, 1);
+INSERT INTO employee_type(Employee_Type, Rate, Seniority_Multiplier, Overtime_Rate, Level) VALUES ('ShiftSupervisor', 2, 3, 4, 2);
+INSERT INTO employee_type(Employee_Type, Rate, Seniority_Multiplier, Overtime_Rate, Level) VALUES ('Intern', 2, 3, 4, 3);
+INSERT INTO employee_type(Employee_Type, Rate, Seniority_Multiplier, Overtime_Rate, Level) VALUES ('Resident', 2, 3, 4, 3);
+INSERT INTO employee_type(Employee_Type, Rate, Seniority_Multiplier, Overtime_Rate, Level) VALUES ('Technician', 2, 3, 4, 0);
 
 -- Insert employeeList
 -- INSERT INTO employee (`Last_Name`,`First_Name`,`Hire_Date`,`Years_Experience`,`user_name`,`password`,`unit_id`,`employee_type_id`) VALUES ('Ayala','Arden','1899-12-30',2,'t5Q7Y6','kTaLjNrj',3,2);

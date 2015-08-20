@@ -21,4 +21,7 @@ public class Unit extends Model {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "unit")
     public List<Location> locations;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "unit")
+    public List<Shift> shifts;
 }

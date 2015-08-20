@@ -19,6 +19,10 @@ POST        /employee/               controllers.Employees.save()
 GET         /patient/:id             controllers.Patients.history(id: Int)
 GET         /patients                controllers.Patients.list(page: Int ?= 0, sortBy: Int ?= 1, order: String ?= "asc")
 
+GET         /treatments/new          controllers.Treatments.create()
+GET         /treatment/:id           controllers.Treatments.edit(id: Int)
+POST        /treatments              controllers.Treatments.save()
+
 # This are just for testing the authorization functionality
 GET         /unauthorizedPage        controllers.Application.unauthorizedPage()
 

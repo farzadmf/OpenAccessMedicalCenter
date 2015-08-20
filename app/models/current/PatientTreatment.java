@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
-@Table(name = "Treatment_Instances")
+@Table(name = "Treatment_Instance")
 public class PatientTreatment extends Model {
 
     @Id
@@ -44,7 +44,6 @@ public class PatientTreatment extends Model {
     @Column(name = "Treatment_Date")
     public Date date;
 
-    //TODO: add foreign keys for "patient", "employee", and "treatment"
     @ManyToOne
     @JoinColumn(name = "Patient_ID")
     public Patient patient;

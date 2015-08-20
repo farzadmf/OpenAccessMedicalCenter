@@ -51,6 +51,9 @@ public class Employee extends Model {
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
     public List<PatientTreatment> treatments;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "employee")
+    public List<AssignedShift> assignedShifts;
+
     public static Employee getByUsername(String username) {
         return Ebean.find(Employee.class)
                 .where()

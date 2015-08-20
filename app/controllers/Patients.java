@@ -17,6 +17,7 @@ public class Patients extends Controller {
 
     @Authorized(role = EmployeeTypes.Administrator)
     @Authorized(role = EmployeeTypes.Director)
+    @Authorized(role = EmployeeTypes.Doctor)
     public static Result history(int patientId) {
         Patient patient = Ebean.find(Patient.class, patientId);
         List<PatientTreatment> treatments = patient.treatments;
@@ -25,6 +26,7 @@ public class Patients extends Controller {
 
     @Authorized(role = EmployeeTypes.Administrator)
     @Authorized(role = EmployeeTypes.Director)
+    @Authorized(role = EmployeeTypes.Doctor)
     public static Result list(int page, int sortBy, String order) {
         String[] sortColumns = {"Patient_ID", "Last_Name", "First_Name", "Phone_Number", "Address", "Medicare_Number"};
         String sortColumn = sortColumns[sortBy - 1];

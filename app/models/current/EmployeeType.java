@@ -30,7 +30,7 @@ public class EmployeeType extends Model {
     @Enumerated(value = EnumType.STRING)
     public EmployeeTypes employeeType;
 
-    @Column(name = "Access_Level")
+    @Column(name = "Level")
     public Integer accessLevel;
 
     @Column(name = "Rate")

@@ -1,15 +1,18 @@
 package models.temp;
 
+import models.current.Patient;
 import play.db.ebean.Model;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.List;
 
 @Entity
-@Table(name = "Beds")
+@Table(name = "Bed")
 public class Bed extends Model {
 
     @Embeddable
-    public class BedKey {
+    public class BedKey implements Serializable {
         @Column(name = "Bed_ID")
         public Integer bedId;
         @Column(name = "Location_Location_ID")
@@ -34,8 +37,12 @@ public class Bed extends Model {
     }
 
     @EmbeddedId
-    private BedKey key;
+    public BedKey key;
 
-    //TODO: set the foreign key for "patient"
-    //TODO: shouldn't we allow NULLs for patient
+    @ManyToOne
+    @JoinColumn(name = "Patient_ID")
+    public Patient patient;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "bedId")
+    public List<ShiftBed> shiftBeds;
 }

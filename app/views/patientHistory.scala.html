@@ -51,6 +51,7 @@
             <table class="table table-bordered table-striped table-hover">
                 <thead>
                     <tr>
+                        <th>Patient Treatment Id</th>
                         <th>Treatment Date</th>
                         <th>Employee</th>
                         <th>Treatment</th>
@@ -60,6 +61,7 @@
                 <tbody>
                     @for(treatment <- treatments) {
                         <tr>
+                            <td><a href="@routes.Treatments.edit(treatment.patientTreatmentId)">@treatment.patientTreatmentId</a></td>
                             <td>@treatment.date</td>
                             <td>@treatment.employee.firstName @treatment.employee.lastName (@treatment.employee.employeeType.employeeType)</td>
                             <td><span class="pull-left">@treatment.treatment.name</span><span style="margin-right: 5px;" class="pull-right">(@{String.format("$%,5.2f", treatment.treatment.cost)})</span></td>

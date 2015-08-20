@@ -1,0 +1,67 @@
+@(surgeryForm: Form[Object], patients: List[models.current.Patient], employees: List[models.current.Employee],
+        treatments: List[models.current.Treatment])
+
+@main("Schedule Treatment") {
+
+    <div class="container col-sm-8 col-sm-offset-2">
+        <form id="surgeryForm" name="surgeryForm" action="@routes.Treatments.save()" method="post" class="form-horizontal">
+            <input type="hidden" name="treatmentId" id="treatmentId" value="@surgeryForm("patientTreatmentId").value">
+            <div class="form-group">
+                <label for="patient" class="control-label col-sm-3">Patient: </label>
+                <div class="col-sm-9">
+                    <select class="form-control" id="patient" name="patient">
+                    @for(patient <- patients) {
+                        <option @if(surgeryForm("patientId").value().equals(patient.patientId.toString)) {selected="selected"}
+                        value="@{patient.patientId}">@patient.firstName @patient.lastName</option>
+                    }
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="employee" class="control-label col-sm-3">Employee: </label>
+                <div class="col-sm-9">
+                    <select class="form-control" id="employee" name="employee">
+                    @for(employee <- employees) {
+                        <option @if(surgeryForm("employeeId").value().equals(employee.employeeId.toString)) {selected="selected"}
+                        value="@{employee.employeeId}">@employee.firstName @employee.lastName (@employee.employeeType.employeeType)</option>
+                    }
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="treatment" class="control-label col-sm-3">Treatment: </label>
+                <div class="col-sm-9">
+                    <select class="form-control" id="treatment" name="treatment">
+                    @for(treatment <- treatments) {
+                        <option @if(surgeryForm("treatmentId").value().equals(treatment.treatmentId.toString)) {selected="selected"}
+                        value="@{treatment.treatmentId}">@treatment.name</option>
+                    }
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="date" class="control-label col-sm-3">Date: </label>
+                <div class="col-sm-9">
+                    <input type="text" name="date" id="date" placeholder="Treatment Date" class="form-control"
+                           value="@surgeryForm("date").value">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-9 col-sm-offset-3">
+                    <button type="submit" name="treatmentSubmit" value="treatmentSubmit"
+                            id="treatmentSubmit" class="btn btn-default">Submit Changes</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    @*
+    <script>
+        $(function() {
+            $('#date').datetimepicker({
+                format: 'yyyy-mm-dd'
+            });
+        });
+    </script>
+    *@
+}

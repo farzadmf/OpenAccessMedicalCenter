@@ -1,11 +1,13 @@
 package models.temp;
 
+import models.current.AssignedShift;
+import models.temp.Bed;
 import play.db.ebean.Model;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Beds_assigned_to_shift")
+@Table(name = "Bed_assigned_to_shift")
 public class ShiftBed extends Model {
 
     @Embeddable
@@ -28,13 +30,22 @@ public class ShiftBed extends Model {
             if (!(obj instanceof ShiftBedKey))
                 return false;
 
+            if (bedId == null || shiftId == null)
+                return false;
+
             ShiftBedKey other = (ShiftBedKey) obj;
             return (other.bedId.equals(bedId) && other.shiftId.equals(shiftId));
         }
     }
 
     @EmbeddedId
-    private ShiftBedKey key;
+    public ShiftBedKey key;
 
-    //TODO: add foreign key for "Employee"
+    @ManyToOne
+    @JoinColumn(name = "Bed_ID")
+    public Bed bed;
+
+    @ManyToOne
+    @JoinColumn(name = "Shift_ID")
+    public AssignedShift assignedShift;
 }

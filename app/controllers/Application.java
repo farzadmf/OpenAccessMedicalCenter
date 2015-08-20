@@ -45,7 +45,7 @@ public class Application extends Controller {
 
     public static Result logout() {
         session().clear();
-        return ok(index.render());
+        return redirect(routes.Application.index());
     }
 
     public static Result unauthorizedPage() {
