@@ -4,16 +4,26 @@
 
 # Home page
 GET         /                        controllers.Application.index()
+GET         /palliative              controllers.Application.palliative()
+GET         /children                controllers.Application.children()
+GET         /surgery                 controllers.Application.surgery()
+
 GET         /login                   controllers.Application.login()
 POST        /login                   controllers.Application.postLogin()
 GET         /logout                  controllers.Application.logout()
 
+GET         /employees               controllers.Employees.list(page: Int ?= 0, sortBy: Int ?= 1, order: String ?= "asc")
+GET         /employee/:id            controllers.Employees.edit(id: Int)
+POST        /employee/               controllers.Employees.save()
+
+GET         /patient/:id             controllers.Patients.history(id: Int)
+GET         /patients                controllers.Patients.list(page: Int ?= 0, sortBy: Int ?= 1, order: String ?= "asc")
+
+GET         /treatments/new          controllers.Treatments.create()
+GET         /treatment/:id           controllers.Treatments.edit(id: Int)
+POST        /treatments              controllers.Treatments.save()
+
 # This are just for testing the authorization functionality
-GET         /admin                   controllers.Application.admin()
-GET         /doctor                  controllers.Application.doctor()
-GET         /intern                  controllers.Application.intern()
-GET         /shift-supervisor        controllers.Application.shiftSupervisor()
-GET         /nurse                   controllers.Application.nurse()
 GET         /unauthorizedPage        controllers.Application.unauthorizedPage()
 
 # Map static resources from the /public folder to the /assets URL path

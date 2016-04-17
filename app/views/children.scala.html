@@ -1,13 +1,13 @@
 
-@main("Welcome to COMP353OAMC") {
+@main("Children's Unit") {
 
     <div class="container col-sm-8 col-sm-offset-2">
-        <h1>Welcome to the Open Access Medical Center!</h1>
+        <h1>Children's Unit</h1>
 
         <div class="row visible-lg visible-md" style="margin-top: 30px; margin-bottom: 30px;">
             @*<div class="carousel slide col-sm-10 col-sm-offset-1 col-lg-8 col-lg-offset-2"*@
             <div class="carousel slide col-sm-10 col-sm-offset-1"
-            id="theCarousel" data-interval="2000">
+            id="theCarousel" data-interval="3000">
 
                 <ol class="carousel-indicators">
                     <li data-target="#theCarousel" data-slide-to="0" class="active"></li>
@@ -18,21 +18,27 @@
 
                 <div class="carousel-inner">
                     <div class="item active">
-                        <img src="@routes.Assets.at("images/homepage1.jpg")" alt="1" class="img-responsive">
+                        <img src="@routes.Assets.at("images/children_unit1.jpg")" alt="1" class="img-responsive">
                         <div class="carousel-caption">
-                            <p>Welcome to the OAMC</p>
+                            <p>Story time in our new play area!</p>
                         </div>
                     </div>
                     <div class="item">
-                        <img src="@routes.Assets.at("images/homepage2.jpg")" alt="2" class="img-responsive">
+                        <img src="@routes.Assets.at("images/children_unit2.jpg")" alt="2" class="img-responsive">
                         <div class="carousel-caption">
-                            <p>Healthcare designed for the future</p>
+                            <p>A cheerful start to your visit</p>
                         </div>
                     </div>
                     <div class="item">
-                        <img src="@routes.Assets.at("images/homepage3.jpg")" alt="3" class="img-responsive">
+                        <img src="@routes.Assets.at("images/children_unit3.jpg")" alt="3" class="img-responsive">
                         <div class="carousel-caption">
-                            <p>Diversity is our strength</p>
+                            <p>Healthcare professional who care</p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="@routes.Assets.at("images/children_unit4.jpg")" alt="4" class="img-responsive">
+                        <div class="carousel-caption">
+                            <p>Let your imagination take flight in our video game center</p>
                         </div>
                     </div>
                 </div>
@@ -49,18 +55,17 @@
 
         <div class="well">
             <p class="text-justify">
-                The OAMC is Montreal's foremost medical care provider, with three specialized units
-                covering all patient needs. The surgical unit, palliative care unit and children's
-                unit are located on a beautiful urban campus in the heart of Downtown Montreal,
-                with direct access to the metro green line and the nearby highway 67. The OAMC has
-                deep historic roots in the local Universities, and draws most of its staff from them
-                and the local community, as well as some of the finest professionals from around the world.
-                It is a bilingual hospital providing full service in both official languages, and stresses
-                the provision of empathic, professional, and cutting-edge healthcare to the greater community.
-                The OAMC exists to make the health of Montrealers, patients, and employees the best it can be.
+                The OAMC Pediatrics unit was established for the special needs of children
+                in the Greater Montreal area and surroundings. Equipped with the latest medical
+                technologies, and staffed by empathic healthcare professionals of the highest
+                quality, the OAMC Pediatrics unit provides children with the care they deserve.
+                This child friendly environment is the right alternative to more stressful adult
+                hospital environments. It features colorful paint, a modern play area that is
+                constantly supervised, and frequent activities and visits from entertainers and volunteers.
             </p>
         </div>
     </div>
+
     <script>
         $(function () {
             $("#theCarousel").carousel();
